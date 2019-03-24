@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block javascript %}
+   <script src="{% static 'book/js/book.js' %}"></script>
+{% endblock javascript %}
+{% block content %}
+<h1>Books</h1>
+<p>
+<button type="button" class="btn btn-primary btn-sm js-create-book" data-url="{% url 'book_create' %}">
+  New Book
+</button>
+<a class="btn btn-success btn-sm " href="{% url 'export_users_csv' %}">Export CSV</a>
+<a class="btn btn-success btn-sm " href="{% url 'export_users_xls' %}">Export EXCEL</a>
+
+</p>
+<table class="table table-sm " id="book-table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Type</th>
+      <th scope="col">Publication date</th>
+      <th scope="col">Pages</th>
+      <th scope="col">Price</th>
+      <th scope="col"> </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  {% include 'book/includes/partial_book_list.html' %}
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="modal-book" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+ 
+    </div>
+  </div>
+</div>
+{% endblock content %}
